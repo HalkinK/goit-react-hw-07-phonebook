@@ -1,9 +1,9 @@
 import { useState } from "react";
 import shortid from "shortid";
 import styles from "../ContactForm/ContactForm.module.css";
-
+import * as contactActions from "../../redux/contact-actions";
 import { useDispatch } from "react-redux";
-import { addContact } from "../../redux/contact-actions";
+// import { addContact } from "../../redux/contact-actions";
 
 function ContactForm() {
   const dispatch = useDispatch();
@@ -11,8 +11,8 @@ function ContactForm() {
   const [name, setName] = useState("");
   const [number, setNumber] = useState("");
 
-  const nameInputId = () => shortid.generate();
-  const numberInputId = () => shortid.generate();
+  // const nameInputId = () => shortid.generate();
+  // const numberInputId = () => shortid.generate();
 
   const handleChange = (e) => {
     const { name, value } = e.currentTarget;
@@ -30,7 +30,8 @@ function ContactForm() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(addContact({ name, number }));
+    const id = shortid.generate();
+    dispatch(contactActions.addContactSuccess({ id, name, number }));
     resetForm();
   };
 
@@ -41,7 +42,7 @@ function ContactForm() {
 
   return (
     <form className={styles.form} onSubmit={handleSubmit}>
-      <label htmlFor={nameInputId}>
+      <label /*htmlFor={nameInputId}*/>
         Name
         <input
           className={styles.input}
@@ -52,11 +53,11 @@ function ContactForm() {
           title="Имя может состоять только из букв, апострофа, тире и пробелов. Например Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan и т. п."
           required
           onChange={handleChange}
-          id={nameInputId}
+          // id={nameInputId}
         />
       </label>
       <br />
-      <label htmlFor={numberInputId}>
+      <label /*htmlFor={numberInputId}*/>
         Number
         <input
           className={styles.input}
@@ -67,7 +68,7 @@ function ContactForm() {
           title="Номер телефона должен состоять цифр и может содержать пробелы, тире, круглые скобки и может начинаться с +"
           required
           onChange={handleChange}
-          id={numberInputId}
+          // id={numberInputId}
         />
       </label>
       <br />
