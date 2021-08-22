@@ -7,8 +7,9 @@ import * as contactSelectors from "./redux/contact-selectors";
 
 function App() {
   const isLoading = useSelector((state) => contactSelectors.getLoading(state));
-
   const error = useSelector((state) => contactSelectors.getError(state));
+  // const filter = useSelector(state => contactSelectors.getFilteredContacts(state))
+
   return (
     <div>
       <h1>Phonebook</h1>
