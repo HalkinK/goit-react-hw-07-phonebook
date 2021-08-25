@@ -26,6 +26,12 @@ const isLoading = createReducer(false, {
   [contactActions.fetchContactRequest]: () => true,
   [contactActions.fetchContactSuccess]: () => false,
   [contactActions.fetchContactError]: () => false,
+  [contactActions.addContactRequest]: () => true,
+  [contactActions.addContactSuccess]: () => false,
+  [contactActions.addContactError]: () => false,
+  [contactActions.deleteContactRequest]: () => true,
+  [contactActions.deleteContactSuccess]: () => false,
+  [contactActions.deleteContactError]: () => false,
 });
 
 export default combineReducers({

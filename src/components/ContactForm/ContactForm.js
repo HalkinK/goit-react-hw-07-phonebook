@@ -1,9 +1,11 @@
 import { useState } from "react";
 import shortid from "shortid";
 import styles from "../ContactForm/ContactForm.module.css";
-import * as contactActions from "../../redux/contact-actions";
-import { useDispatch } from "react-redux";
+// import * as contactActions from "../../redux/contact-actions";
+import { useDispatch /*useSelector*/ } from "react-redux";
+import * as contactOperations from "../../redux/contact-operations";
 // import { addContact } from "../../redux/contact-actions";
+// import * as contactsSelectors from "../../redux/contact-selectors";
 
 function ContactForm() {
   const dispatch = useDispatch();
@@ -28,10 +30,12 @@ function ContactForm() {
     }
   };
 
+  // useSelector((state) => contactsSelectors.getContacts(state));
+
   const handleSubmit = (e) => {
     e.preventDefault();
     const id = shortid.generate();
-    dispatch(contactActions.addContactSuccess({ id, name, number }));
+    dispatch(contactOperations.addContact({ id, name, number }));
     resetForm();
   };
 
