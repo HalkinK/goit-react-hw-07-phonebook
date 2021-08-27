@@ -8,8 +8,10 @@ import * as contactsOperations from "../../redux/contact-operations";
 
 const ContactList = () => {
   const dispatch = useDispatch();
-  const onDeleteContact = (id) =>
-    dispatch(contactsOperations.deleteContact(id));
+
+  const contacts = useSelector(contactsSelectors.getFilteredContacts);
+  // const onDeleteContact = (id) =>
+  //   dispatch(contactsOperations.deleteContact(id));
 
   // const getContactList = (state) => {
   //   const { filter, items } = state.contacts;
@@ -24,8 +26,6 @@ const ContactList = () => {
     dispatch(contactsOperations.fetchContacts());
   }, [dispatch]);
 
-  const contacts = useSelector(contactsSelectors.getFilteredContacts);
-
   return (
     <ul>
       {contacts.map(({ id, name, number }) => {
@@ -35,7 +35,7 @@ const ContactList = () => {
             <button
               className={styles.button}
               type="button"
-              onClick={() => onDeleteContact(id)}
+              onClick={() => dispatch(contactsOperations.deleteContact(id))}
             >
               Delete
             </button>

@@ -30,12 +30,12 @@ function ContactForm() {
     }
   };
 
-  // useSelector((state) => contactsSelectors.getContacts(state));
-
   const handleSubmit = (e) => {
     e.preventDefault();
+
     const id = shortid.generate();
     dispatch(contactOperations.addContact({ id, name, number }));
+
     resetForm();
   };
 

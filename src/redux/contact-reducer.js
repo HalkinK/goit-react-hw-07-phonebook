@@ -19,7 +19,7 @@ const items = createReducer([], {
 });
 
 const filter = createReducer("", {
-  [contactActions.changeFilter]: (_, { payload }) => payload,
+  [contactActions.changeFilter]: (state, { payload }) => payload,
 });
 
 const isLoading = createReducer(false, {
